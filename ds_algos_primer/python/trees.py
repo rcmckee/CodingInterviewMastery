@@ -22,12 +22,16 @@ class BinarySearchTree:
     class _TreeNode:
         def __init__(self, val: int = 0):
             # INSERT YOUR SOLUTION HERE
+            self.val = val
+            self.right = None
+            self.left = None
 
     """
     Constructor
     """
     def __init__(self):
         # INSERT YOUR SOLUTION HERE
+        self.root = None
 
     """
     Insert a value into the tree (in order)
@@ -37,6 +41,18 @@ class BinarySearchTree:
     """
     def insert(self, n: int):
         # INSERT YOUR SOLUTION HERE
+        # do i enter it at the beginning or at the end
+        # I am keeping track of root so if I put it there it will be easy, then do bubble down?
+        temp = self.root
+        self.root = _TreeNode(n)
+        # this doesn't seem to make sense. I should go to the end.
+        # do I backtrack and keep track of which nodes I visited?
+        if not self.root:
+            self.root = self._TreeNode(n)
+            return
+        
+        
+        
 
     """
     Delete a value from the BST
