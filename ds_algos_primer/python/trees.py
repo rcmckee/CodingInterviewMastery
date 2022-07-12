@@ -41,15 +41,39 @@ class BinarySearchTree:
     """
     def insert(self, n: int):
         # INSERT YOUR SOLUTION HERE
-        # do i enter it at the beginning or at the end
-        # I am keeping track of root so if I put it there it will be easy, then do bubble down?
-        temp = self.root
-        self.root = _TreeNode(n)
-        # this doesn't seem to make sense. I should go to the end.
-        # do I backtrack and keep track of which nodes I visited?
-        if not self.root:
+#         do i enter it at the beginning or at the end
+#         # I am keeping track of root so if I put it there it will be easy, then do bubble down?
+#         temp = self.root
+#         self.root = _TreeNode(n)
+#         # this doesn't seem to make sense. I should go to the end.
+#         # do I backtrack and keep track of which nodes I visited?
+#         if not self.root:
+#             self.root = self._TreeNode(n)
+#             return
+        # if the tree is empty, make this new node the root
+        if self.root is None:
             self.root = self._TreeNode(n)
             return
+        
+        # go down the tree until we get to an empty space
+        # insert value into tree
+        # remember this is a binary search tree
+        curr = self.root
+        while True: # this seems risky
+            # if our value to insert is less than current node it goes in left sub tree becaus its bst
+            if n < curr.val:
+                if curr.left: # if the left node exists, then make that one the current node to search down
+                    curr = curr.left
+                else:
+                    curr.left = self._TreeNode(n) # if the left node doesn't exist then we can put the value there
+                    return
+            else:
+                # otherwise the value goes in the right subtree becauseit's greater than the current value
+                if curr.right:
+                    curr = curr.right
+                else:
+                    curr.right = self._TreeNode(n)
+                    return
         
         
         
